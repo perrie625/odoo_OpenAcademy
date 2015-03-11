@@ -15,8 +15,13 @@
                             <page string="Description">
                                 <field name="description"/>
                             </page>
-                            <page string="About">
-                                This is an example of notebooks
+                            <page string="Session">
+                                <field name="session_ids">
+                                    <tree string="Registered sessions">
+                                        <field name="name"/>
+                                        <field name="insructor_id"/>
+                                    </tree>
+                                </field>
                             </page>
                         </notebook>
                     </sheet>
