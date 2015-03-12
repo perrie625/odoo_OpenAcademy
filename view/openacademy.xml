@@ -9,7 +9,7 @@
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="responsible_id"
+                            <field name="responsible_id"/>
                         </group>
                         <notebook>
                             <page string="Description">
@@ -19,7 +19,7 @@
                                 <field name="session_ids">
                                     <tree string="Registered sessions">
                                         <field name="name"/>
-                                        <field name="insructor_id"/>
+                                        <field name="instructor_id"/>
                                     </tree>
                                 </field>
                             </page>
