@@ -57,7 +57,7 @@
             that is an action opening a view or a set of views
         -->
         <record model="ir.actions.act_window" id="course_list_action">
-            <field name="name">Courses</field>
+            <field name="name">Ccccourses</field>
             <field name="res_model">openacademy.course</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
