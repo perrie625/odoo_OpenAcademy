@@ -12,6 +12,17 @@ class Course(models.Model):
                                      string="Responsible", index=True)
     session_ids = fields.One2many('openacademy.session', 'course_id', string="Sessions")
 
+    _sql_constraints = [
+        ('name_description_check',
+         'CHECK( name != description)',
+         "The title of the course should not be the description"),
+
+        ('name_unique',
+         'UNIQUE(name)',
+         "The course title must be unique"),
+    ]
+
+
 class Session(models.Model):
     _name = 'openacademy.session'
 
@@ -23,7 +34,7 @@ class Session(models.Model):
 
     instructor_id = fields.Many2one('res.partner', string="Instructor",
                                     domain=['|', ('instructor', '=', True),
-                                                 ('category_id.name', 'ilike', "Teacher")])
+                                            ('category_id.name', 'ilike', "Teacher")])
     course_id = fields.Many2one('openacademy.course', ondelete='cascade',
                                 string="Course", requiresd=True)
     attendee_ids = fields.Many2many('res.partner', string="Attendees")
@@ -42,7 +53,7 @@ class Session(models.Model):
     def _verify_valid_seats(self):
         if self.seats < 0:
             return {
-                'warning':{
+                'warning': {
                     'title': "Incorrect 'seats' value",
                     'message': "The number of available seats may not be negative",
                 },
@@ -60,7 +71,7 @@ class Session(models.Model):
     def _check_instructor_not_in_attendees(selfs):
         if self.instructor_id and self.instructor_id in self.attendee_ids:
             raise exceptions.ValidationError("A session's instructor can't be an attendeee")
-        # class openacademy(models.Model):
-#     _name = 'openacademy.openacademy'
+            # class openacademy(models.Model):
+            # _name = 'openacademy.openacademy'
 
-#     name = fields.Char()
+            #     name = fields.Char()
