@@ -116,11 +116,25 @@
             <field name="name">session.tree</field>
             <field name="model">openacademy.session</field>
             <field name="arch" type="xml">
-                <tree string="Session Tree">
+                <tree string="Session Tree" colors="#0000ff:duration&lt;5;red:duration&lt;15">
                     <field name="name"/>
                     <field name="course_id"/>
+                    <field name="duration" invisible="1"/>
                     <field name="taken_seats" widget="progressbar"/>
                 </tree>
+            </field>
+        </record>
+
+        <!-- calendar view -->
+        <record model="ir.ui.view" id="session_calendar_view">
+            <field name="name">session.calendar</field>
+            <field name="model">openacademy.session</field>
+            <field name="arch" type="xml">
+                <calendar string="Session Calendar" date_start="start_date"
+                          date_stop="end_date"
+                          color="instructor_id">
+                    <field name="name"/>
+                </calendar>
             </field>
         </record>
 
@@ -128,7 +142,7 @@
             <field name="name">Sessions</field>
             <field name="res_model">openacademy.session</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,calendar</field>
         </record>
 
         <menuitem id="session_menu" name="Sessions"
