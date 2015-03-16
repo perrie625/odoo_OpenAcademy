@@ -97,15 +97,15 @@ class Session(models.Model):
                 'warning': {
                     'title': "Incorrect 'seats' value",
                     'message': "The number of available seats may not be negative",
-                },
-            }
+                    },
+                }
         if self.seats < len(self.attendee_ids):
             return {
                 'warning': {
                     'title': "Too many attendees",
-                    'messages': "Increase seats or remove excess attendees",
-                },
-            }
+                    'message': "Increase seats or remove excess attendees",
+                    },
+                }
         # no warning raise correctly when the attendees gt seats
     @api.one
     @api.depends('start_date', 'duration')
