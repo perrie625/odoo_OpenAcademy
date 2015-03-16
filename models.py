@@ -106,7 +106,7 @@ class Session(models.Model):
                     'messages': "Increase seats or remove excess attendees",
                 },
             }
-
+        # no warning raise correctly when the attendees gt seats
     @api.one
     @api.depends('start_date', 'duration')
     def _get_end_date(self):
