@@ -29,7 +29,8 @@
         'templates.xml',
         'view/openacademy.xml',
         'view/partner.xml',
-        'view/session_workflow.xml'
+        'view/session_workflow.xml',
+        'reports.xml',
         ],
     # only loaded in demonstration mode
     'demo': [
